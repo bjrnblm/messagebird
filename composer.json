@@ -1,6 +1,6 @@
 {
     "name": "bjrnblm/messagebird",
-    "description": "A MessageBird bridge for laravel",
+    "description": "A Messagebird bridge for laravel",
     "keywords": [
         "laravel",
         "messagebird",
@@ -13,7 +13,7 @@
     "authors": [
         {
             "name": "Björn Blom",
-            "email": "bjornblom@gmail.com",
+            "email": "bjornblom@gmail.com"
         }
     ],
     "require": {
