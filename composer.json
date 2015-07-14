@@ -1,0 +1,46 @@
+{
+    "name": "bjrnblm/messagebird",
+    "description": "A MessageBird bridge for laravel",
+    "keywords": [
+        "laravel",
+        "messagebird",
+        "laravel messagebird",
+        "bjrnblm",
+        "bridge"
+    ],
+    "homepage": "https://github.com/bjrnblm/messagebird",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Björn Blom",
+            "email": "bjornblom@gmail.com",
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.4.0",
+        "messagebird/php-rest-api": "^1.1",
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bjrnblm\\Messagebird\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bjrnblm\\Messagebird\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
