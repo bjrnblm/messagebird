@@ -1,6 +1,6 @@
 # MessageBird bridge for laravel 
 
-A quickly build Laravel bridge for the `messagebird/php-rest-api` package. This is only used in a small personal project but feel free to use / improve.
+A quickly built Laravel bridge for the `messagebird/php-rest-api` package. This is only used in a small personal project but feel free to use / improve.
 
 ## Install
 
