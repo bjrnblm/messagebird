@@ -20,7 +20,7 @@ Set your `access_key` in `config/messagebird.php`
 
 ## Usage
 
-### Get balance
+### Get Balance
 
 ```
 Messagebird::getBalance();
