@@ -6,6 +6,7 @@ class Messagebird
 {
 
     public $client;
+    public $errorMessages = []; 
 
     /**
      *
@@ -13,6 +14,19 @@ class Messagebird
     public function __construct(\MessageBird\Client $client)
     {
         $this->client = $client;
+        $this->errorMessages = $this->getErrorMessages();
+    }
+
+    /**
+     *
+     */
+    public function getErrorMessages()
+    {
+        $errorMessages = [];
+        $errorMessages['authentication'] = 'Authentication failed, check your access key';
+        $errorMessages['balance'] = 'Not enough balance on your account';
+
+        return $errorMessages;
     }
 
     /**
@@ -22,6 +36,8 @@ class Messagebird
     {
         try {
             return $this->client->balance->read();
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -38,6 +54,10 @@ class Messagebird
 
         try {
             return $this->client->hlr->create($hlr);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
+        } catch (\MessageBird\Exceptions\BalanceException $e) {
+            return $this->errorMessages['balance'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -50,6 +70,8 @@ class Messagebird
     {
         try {
             return $this->client->hlr->getList(['offset' => $offset, 'limit' => $limit]);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];          
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -62,6 +84,8 @@ class Messagebird
     {
         try {
             return $this->client->hlr->read($id);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -79,6 +103,10 @@ class Messagebird
 
         try {
             return $this->client->messages->create($message);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
+        } catch (\MessageBird\Exceptions\BalanceException $e) {
+            return $this->errorMessages['balance'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -91,6 +119,8 @@ class Messagebird
     {
         try {
             return $this->client->messages->delete($id);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -103,6 +133,8 @@ class Messagebird
     {
         try {
             return $this->client->messages->getList(['offset' => $offset, 'limit' => $limit]);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -115,6 +147,8 @@ class Messagebird
     {
         try {
             return $this->client->messages->read($id);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -134,6 +168,10 @@ class Messagebird
 
         try {
             return $this->client->messages->voicemessages($voiceMessage);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
+        } catch (\MessageBird\Exceptions\BalanceException $e) {
+            return $this->errorMessages['balance'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -146,6 +184,8 @@ class Messagebird
     {
         try {
             return $this->client->voicemessages->getList(['offset' => $offset, 'limit' => $limit]);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -158,6 +198,8 @@ class Messagebird
     {
         try {
             return $this->client->voicemessages->read($id);
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) {
+            return $this->errorMessages['authentication'];
         } catch (\Exception $e) {
             return $e->getMessage();
         }
