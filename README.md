@@ -5,7 +5,7 @@ A quickly built Laravel bridge for the `messagebird/php-rest-api` package. This 
 ## Install
 
 ``` bash
-composer require bjrnblm/messagebird
+composer require bjrnblm/messagebird dev-master
 ```
 
 ## Configuration
