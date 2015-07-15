@@ -4,34 +4,44 @@ A quickly built Laravel bridge for the `messagebird/php-rest-api` package. This 
 
 ## Install
 
-```
+``` bash
 composer require bjrnblm/messagebird
 ```
 
 ## Configuration
 
-Create the config file
 
-```
+``` bash
 php artisan vendor:publish
 ```
 
 Set your `access_key` in `config/messagebird.php` 
 
+Add the following your `providers` in `config/app.php`
+
+``` php
+Bjrnblm\Messagebird\MessagebirdServiceProvider::class
+```
+
+Add the following your `aliases` in `config/app.php`
+
+``` php
+'Messagebird' => Bjrnblm\Messagebird\Facades\Messagebird::class
+```
+
 ## Usage
 
 ### Get Balance
 
-```
+``` php
 Messagebird::getBalance();
 ```
 
 ### Create Message
 
-```
+``` php
 Messagebird::createMessage($originator, $recipients = [], $body);
 ```
-
 
 ## License
 
