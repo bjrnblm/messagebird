@@ -205,4 +205,18 @@ class Messagebird
         }
     }
 
+    /**
+     *
+     */
+    public function lookup($phonenumber) 
+    { 
+        try { 
+            return $this->client->lookup->read($phonenumber); 
+        } catch (\MessageBird\Exceptions\AuthenticateException $e) { 
+            return $this->errorMessages['authentication']; 
+        } catch (\Exception $e) { 
+            return $e->getMessage(); 
+        } 
+    }
+
 }
