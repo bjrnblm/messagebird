@@ -167,7 +167,7 @@ class Messagebird
         $voiceMessage->ifMachine  = $ifMachine;
 
         try {
-            return $this->client->messages->voicemessages($voiceMessage);
+            return $this->client->voicemessages->create($voiceMessage);
         } catch (\MessageBird\Exceptions\AuthenticateException $e) {
             return $this->errorMessages['authentication'];
         } catch (\MessageBird\Exceptions\BalanceException $e) {
